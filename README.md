@@ -3,9 +3,10 @@ Ambari service for easily installing and managing Hue on HDP cluster.
 
 Authors: 
   - [Kyle Joe](https://github.com/EsharEditor)
-  - [Steven Matison] (https://github.com/steven-dfheinz)
+  - [Steven Matison](https://github.com/steven-dfheinz)
 
-A big thank you to Kyle and the original github repo. Have a lookg here:  https://github.com/EsharEditor/ambari-hue-service
+A big thank you to Kyle for creating the original github repo. 
+Have a look here:  https://github.com/EsharEditor/ambari-hue-service
 
 Also see https://gethue.com for more information, versions, and Hue documentation.
 
@@ -14,10 +15,10 @@ Also see https://gethue.com for more information, versions, and Hue documentatio
 - Ambari v2.4.0+
 
 #### Setup
-   ***) be sure to get your correct [version] and [githuburl] for below command
+   **** be sure to get your correct [version] for below command
 
 ``` 
-sudo git clone [githuburl] /var/lib/ambari-server/resources/stacks/HDP/[version]/services/HUE
+sudo git clone https://github.com/steven-dfheinz/HDP3-Hue-Service.git /var/lib/ambari-server/resources/stacks/HDP/[version]/services/HUE
 ```
 
 - Restart Ambari
@@ -25,3 +26,14 @@ sudo git clone [githuburl] /var/lib/ambari-server/resources/stacks/HDP/[version]
 service ambari-server restart
 ```
 - Then you can click on 'Add Service' and choose HUE
+
+#### Coming Soon
+- Updates for Hue 4.x
+- Bundling this service into an easier to use Management Pack
+
+#### Known Issues
+- hue user, hue group error when Ambari is Managing User/Group Creation. The work around is below:
+```
+python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n HDP3 -l hdp3.cloudera.com -t 8080 -a set -c cluster-env -k  ignore_groupsusers_create -v true
+```
+	**** make sure to get correct Cluster Name (HDP3) and Url (hdp3.cloudera.com)
