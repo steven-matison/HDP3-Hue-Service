@@ -38,4 +38,4 @@ service ambari-server restart
 python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n HDP3 -l hdp3.cloudera.com -t 8080 -a set -c cluster-env -k  ignore_groupsusers_create -v true
 ```
 
-  **** make sure to get correct Cluster Name (HDP3) and Url (hdp3.cloudera.com) for command above
+  **** make sure to get correct Cluster Name (HDP3) and Ambari Host (hdp3.cloudera.com) for command above
