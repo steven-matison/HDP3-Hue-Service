@@ -1,7 +1,7 @@
 #### An Ambari Service for Hue
 Ambari service for easily installing and managing Hue on HDP cluster.
 
-Authors: 
+####Authors: 
   - [Kyle Joe](https://github.com/EsharEditor)
   - [Steven Matison](https://github.com/steven-dfheinz)
 
@@ -26,7 +26,7 @@ sudo git clone https://github.com/steven-dfheinz/HDP3-Hue-Service.git /var/lib/a
 ```
 service ambari-server restart
 ```
-- Next lick on 'Add Service' and choose HUE in the Installation Wizard
+- In Ambari click on 'Add Service' and install HUE
 
 #### Coming Soon
 - Updates for Hue 4.x
