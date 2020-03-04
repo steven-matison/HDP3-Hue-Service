@@ -22,7 +22,7 @@ Also see https://gethue.com for more information, versions, and Hue documentatio
 sudo git clone https://github.com/steven-dfheinz/HDP3-Hue-Service.git /var/lib/ambari-server/resources/stacks/HDP/[version]/services/HUE
 ```
 
-**** be sure to get your correct [version] for below command
+**** be sure to get your correct [version] for command above
 
 - Restart Ambari
 ```
@@ -40,4 +40,4 @@ service ambari-server restart
 python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n HDP3 -l hdp3.cloudera.com -t 8080 -a set -c cluster-env -k  ignore_groupsusers_create -v true
 ```
 
-**** make sure to get correct Cluster Name (HDP3) and Url (hdp3.cloudera.com)
+**** make sure to get correct Cluster Name (HDP3) and Url (hdp3.cloudera.com) for command above
