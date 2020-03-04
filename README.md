@@ -1,7 +1,7 @@
 #### An Ambari Service for Hue
 Ambari service for easily installing and managing Hue on HDP cluster.
 
-####Authors: 
+#### Authors: 
   - [Kyle Joe](https://github.com/EsharEditor)
   - [Steven Matison](https://github.com/steven-dfheinz)
 
