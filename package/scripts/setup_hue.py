@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # encoding=utf8
 import sys, os, pwd, grp, signal, time
+reload(sys)
+sys.setdefaultencoding('utf8')
 from resource_management import *
 from subprocess import call
 from common import *

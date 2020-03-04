@@ -56,11 +56,14 @@ def download_hue():
   """
   Execute('{0} | xargs wget -O hue.tgz'.format(params.download_url))
   Execute('tar -zxvf hue.tgz -C {0} && rm -f hue.tgz'.format(params.hue_install_dir))
-  # Ensure all Hue files owned by hue
-  Execute('ln -s {0} /usr/local/hue'.format(params.hue_dir))
-  Execute('ln -s {0} /usr/hdp/current/hue-server'.format(params.hue_dir))
-  Execute('cd /usr/local/hue && make apps')
-  Execute('chown -R {0}:{1} {2}'.format(params.hue_user,params.hue_group,params.hue_dir))
+  # Create Required Symlinks
+  Execute('ln -s /usr/local/{0} {1}'.format(params.hue_version_dir,params.hue_dir))
+  Execute('ln -s /usr/local/{0} /usr/hdp/current/hue-server'.format(params.hue_dir))
+  # Navigate to directory and build
+  Logger.info("Hue Build Starting")
+  Execute('cd {0} && make apps'.format(params.hue_dir))
+  # Ensure all Hue files owned by hue, notice * here to get both dirs created above
+  Execute('chown -R {0}:{1} {2}*'.format(params.hue_user,params.hue_group,params.hue_dir))
   Logger.info("Hue Service is installed")
 
 def add_hdfs_configuration(if_ranger=False, security_enabled=False):

@@ -30,13 +30,14 @@ tmp_dir = Script.get_tmp_dir()
 stack_root = Script.get_stack_root()
 # Hue download url
 download_url = 'echo https://cdn.gethue.com/downloads/hue-3.11.0.tgz'
+hue_version_dir = 'hue-3.11.0'
 # New Cluster Stack Version that is defined during the RESTART of a Rolling Upgrade
 version = default("/commandParams/version", None)
 stack_name = default("/hostLevelParams/stack_name", None)
 #e.g. /var/lib/ambari-agent/cache/stacks/HDP/$VERSION/services/HUE/package
 service_packagedir = os.path.realpath(__file__).split('/scripts')[0]
 cluster_name = str(config['clusterName'])
-ambari_server_hostname = config['clusterHostInfo']['ambari_server_host'][0]
+ambari_server_hostname = config['ambariLevelParams']['ambari_server_host']
 
 #hue_apps = ['security','pig','filebrowser','jobbrowser','zookeeper','search','rdbms','metastore','spark','beeswax','jobsub','hbase','oozie','indexer']
 hue_hdfs_module_enabled = config['configurations']['hue-env']['hue-hdfs-module-enabled']
@@ -84,7 +85,7 @@ if hue_spark_module_enabled == 'No':
 app_blacklists = list(set(app_blacklists))
 app_blacklist = ','.join(app_blacklists)
 
-java_home = config['hostLevelParams']['java_home']
+java_home = config['ambariLevelParams']['java_home']
 http_host = config['hostname']
 http_port = config['configurations']['hue-env']['http_port']
 hue_pid_dir = config['configurations']['hue-env']['hue_pid_dir']
@@ -207,8 +208,8 @@ hdfs_user = config['configurations']['hadoop-env']['hdfs_user']
 hadoop_bin_dir = stack_select.get_hadoop_dir('bin')
 hadoop_conf_dir = conf_select.get_hadoop_conf_dir()
 hdfs_site = config['configurations']['hdfs-site']
-default_fs = config['configurations']['core-site']['fs.defaultFS']
-dfs_type = default("/commandParams/dfs_type", "")
+default_fs = 'true'
+dfs_type = 'HDFS'
 hdfs_user_keytab = config['configurations']['hadoop-env']['hdfs_user_keytab']
 hdfs_principal_name = config['configurations']['hadoop-env']['hdfs_principal_name']
 kinit_path_local = get_kinit_path(default('/configurations/kerberos-env/executable_search_paths', None))
@@ -247,12 +248,12 @@ if resourcemanager_ha_enabled:
   proxy_api_url1 = resourcemanager_api_url1
   proxy_api_url2 = resourcemanager_api_url2
 else:
-  resourcemanager_host1 = resourcemanager_hosts[0]
+  resourcemanager_host1 = config['configurations']['yarn-site']['yarn.resourcemanager.hostname']
   resourcemanager_webapp_address1 = config['configurations']['yarn-site']['yarn.resourcemanager.webapp.address']
   resourcemanager_api_url1 = format('http://{resourcemanager_webapp_address1}')
   proxy_api_url1 = resourcemanager_api_url1
-histroryserver_host = default("/clusterHostInfo/hs_host", [])
-history_server_api_url = format('http://{histroryserver_host[0]}:19888')
+historyserver_host = config['configurations']['yarn-site']['yarn.resourcemanager.hostname']
+history_server_api_url = format('http://{historyserver_host}:19888')
 slave_hosts = default("/clusterHostInfo/slave_hosts", [])
 
 # configurations of Oozie
