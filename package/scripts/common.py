@@ -54,7 +54,7 @@ def download_hue():
   """
   Download Hue to the installation directory
   """
-  Execute('{0} | xargs wget -O hue.tgz'.format(params.download_url))
+  Execute('{0} | xargs wget --no-check-certificate -O hue.tgz'.format(params.download_url))
   Execute('tar -zxvf hue.tgz -C {0} && rm -f hue.tgz'.format(params.hue_install_dir))
   # Create Required Symlinks
   Execute('ln -s /usr/local/{0} {1}'.format(params.hue_version_dir,params.hue_dir))

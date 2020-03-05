@@ -294,8 +294,8 @@ solr_solrctl_path = config['configurations']['hue-solr-site']['solrctl_path']
 # Hive service is depended on Pig in ambari
 hive_server_hosts = config['clusterHostInfo']['hive_server_hosts']
 #if len(hive_server_hosts) > 0:
-  hive_server_host = config['clusterHostInfo']['hive_server_host'][0]
-  hive_transport_mode = config['configurations']['hive-site']['hive.server2.transport.mode']
+hive_server_host = config['clusterHostInfo']['hive_server_host'][0]
+hive_transport_mode = config['configurations']['hive-site']['hive.server2.transport.mode']
 #  if hive_transport_mode.lower() == "http":
 #    hive_server_port = config['configurations']['hive-site']['hive.server2.thrift.http.port']
 #  else:
@@ -317,7 +317,7 @@ hive_ssl_cacerts = config['configurations']['hue-hive-site']['ssl_cacerts']
 hive_ssl_validate = config['configurations']['hue-hive-site']['ssl_validate']
 
 # configurations of Hbase
-hbase_master_hosts = config['clusterHostInfo']['hbase_master_hosts']
+hbase_master_hosts = default(config['clusterHostInfo']['hbase_master_hosts'],[])
 hbase_clusters = []
 hbase_cluster = ''
 if len(hbase_master_hosts) > 0:
