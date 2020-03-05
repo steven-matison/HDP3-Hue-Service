@@ -118,9 +118,9 @@ def add_hive_configuration(if_ranger=False, security_enabled=False):
   services_configurations = {}
   services_configurations['hive-site'] = {}
   services_configurations['hive-site']['hive.security.authorization.sqlstd.confwhitelist.append'] = 'hive.server2.logging.operation.verbose'
-  services_configurations['webhcat-site'] = {}
-  services_configurations['webhcat-site']['webhcat.proxyuser.hue.groups'] = '*'
-  services_configurations['webhcat-site']['webhcat.proxyuser.hue.hosts'] = '*' 	
+  services_configurations['hive-site'] = {}
+  services_configurations['hive-site']['webhcat.proxyuser.hue.groups'] = '*'
+  services_configurations['hive-site']['webhcat.proxyuser.hue.hosts'] = '*' 	
   if if_ranger:
     services_configurations['hive-site']['hive.server2.enable.impersonation'] = 'true'
   add_configurations(services_configurations)

@@ -292,14 +292,16 @@ solr_solrctl_path = config['configurations']['hue-solr-site']['solrctl_path']
 
 # configurations of Hive and Pig
 # Hive service is depended on Pig in ambari
-hive_server_hosts =  default("/clusterHostInfo/hive_server_host", [])
-if len(hive_server_hosts) > 0:
+hive_server_hosts = config['clusterHostInfo']['hive_server_hosts']
+#if len(hive_server_hosts) > 0:
   hive_server_host = config['clusterHostInfo']['hive_server_host'][0]
   hive_transport_mode = config['configurations']['hive-site']['hive.server2.transport.mode']
-  if hive_transport_mode.lower() == "http":
-    hive_server_port = config['configurations']['hive-site']['hive.server2.thrift.http.port']
-  else:
-    hive_server_port = default('/configurations/hive-site/hive.server2.thrift.port',"10000")
+#  if hive_transport_mode.lower() == "http":
+#    hive_server_port = config['configurations']['hive-site']['hive.server2.thrift.http.port']
+#  else:
+#    hive_server_port = default('/configurations/hive-site/hive.server2.thrift.port',"10000")
+# the config above returns 10001 for thrift port but we need it to be 10000
+hive_server_port = 10000
 hive_conf_dir = config['configurations']['hue-hive-site']['hive_conf_dir']
 hive_server_conn_timeout = config['configurations']['hue-hive-site']['server_conn_timeout']
 hive_use_get_log_api = config['configurations']['hue-hive-site']['use_get_log_api']
@@ -315,7 +317,7 @@ hive_ssl_cacerts = config['configurations']['hue-hive-site']['ssl_cacerts']
 hive_ssl_validate = config['configurations']['hue-hive-site']['ssl_validate']
 
 # configurations of Hbase
-hbase_master_hosts = default("/clusterHostInfo/hbase_master_hosts", [])
+hbase_master_hosts = config['clusterHostInfo']['hbase_master_hosts']
 hbase_clusters = []
 hbase_cluster = ''
 if len(hbase_master_hosts) > 0:
@@ -329,7 +331,7 @@ hbase_truncate_limit = config['configurations']['hue-hbase-site']['truncate_limi
 hbase_thrift_transport = config['configurations']['hue-hbase-site']['thrift_transport']
 
 # configurations of Zookeeper
-zookeeper_hosts = default("/clusterHostInfo/zookeeper_hosts", [])
+zookeeper_hosts = config['clusterHostInfo']['zookeeper_client_hosts']
 zookeeper_hosts.sort()
 zookeeper_client_port = default('/configurations/zoo.cfg/clientPort', None)
 zookeeper_host_ports = []
@@ -346,7 +348,7 @@ if len(zookeeper_hosts) > 0:
   zookeeper_rest_url = format("http://" + zookeeper_hosts[0] + ":9998")
 
 # configurations of Spark
-spark_thriftserver_hosts = default("/clusterHostInfo/spark_thriftserver_hosts", [])
+spark_thriftserver_hosts = config['clusterHostInfo']['spark2_thriftserver_hosts']
 spark_thriftserver_host = "localhost"
 spark_hiveserver2_thrift_port = "10002"
 spark_history_server_url = ''

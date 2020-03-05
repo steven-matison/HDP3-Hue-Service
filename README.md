@@ -30,6 +30,8 @@ service ambari-server restart
 
 #### Known Issues
 - There could still be conflicts with config params not yet migrated to HDP 3.x format
+-   Conflict with Spark2 config object
+-   Conflict with Hbase Thrift Server v1
 - Very long compile time as "make apps" takes nearly 30 minutes to complete dependencies
 - hue user, hue group error when Ambari is Managing User/Group Creation. The work around is below:
 ```
@@ -39,7 +41,7 @@ python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n 
   **** make sure to get correct Cluster Name (HDP3) and Ambari Host (hdp3.cloudera.com) for command above
 
 #### Coming Soon
-- Create repository for hue versions built via "make apps"
+- Create a repository for hue fileset built via "make apps"
 - Updates for Hue 4.x
 - Bundling this service into an easier to use Management Pack
 
