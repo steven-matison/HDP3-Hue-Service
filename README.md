@@ -30,7 +30,10 @@ service ambari-server restart
 - Install requires HDFS,Yarn,Hive,Hbase,Spark,Zookeeper,Sqoop,Oozie.  
 
 #### Known Issues
+- Issue with Pig Config (do not use pig HDP 3.x )
 - If Hbase or Spark are missing, the install will fail on missing config objects
+- Some params are hardcoded for single node test
+- Not tested SSL & High Availability
 - There could still be conflicts with config params not yet migrated to HDP 3.x format
 --   Conflict with Spark2 config object
 --   Conflict with Hbase Thrift Server v1
@@ -44,7 +47,8 @@ python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n 
 
 #### Coming Soon
 - Create a repository for hue fileset built via "make apps"
-- Updates for Hue 4.x
+- Updates for Hue 4.x (see Hue.4.6.0 Branch currently Work In Progress)
 - Bundling this service into an easier to use Management Pack
 - Add better handling for missing components
+- Improve for SSL and High Availability
 
