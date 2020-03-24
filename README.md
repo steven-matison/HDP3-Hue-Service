@@ -11,7 +11,7 @@ Have a look here:  https://github.com/EsharEditor/ambari-hue-service
 Also see https://gethue.com for more information, versions, and official documentation.
 
 #### Version
-- Hue 3.11.0
+- Hue 4.x
 - HDP 3.x
 
 #### Setup
@@ -44,7 +44,7 @@ python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n 
 
 #### Coming Soon
 - Create a repository for hue fileset built via "make apps"
-- Updates for Hue 4.x
+- Resolve User KeyError
 - Bundling this service into an easier to use Management Pack
 - Add better handling for missing components
 

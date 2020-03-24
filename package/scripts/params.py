@@ -28,9 +28,10 @@ component_directory = Script.get_component_from_role(SERVER_ROLE_DIRECTORY_MAP, 
 config = Script.get_config()
 tmp_dir = Script.get_tmp_dir()
 stack_root = Script.get_stack_root()
-# Hue download url
-download_url = 'echo https://cdn.gethue.com/downloads/hue-3.11.0.tgz'
-hue_version_dir = 'hue-3.11.0'
+# Hue 4.x download url
+hue_version = '4.6.0'
+download_url = 'echo https://cdn.gethue.com/downloads/hue-4.6.0.tgz'
+hue_version_dir = 'hue-4.6.0'
 # New Cluster Stack Version that is defined during the RESTART of a Rolling Upgrade
 version = default("/commandParams/version", None)
 stack_name = default("/hostLevelParams/stack_name", None)

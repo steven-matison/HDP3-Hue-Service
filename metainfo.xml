@@ -22,7 +22,7 @@
 	<name>HUE</name>
 	<displayName>Hue</displayName>
     <comment>Hue is a graphical user interface to operate and develop applications for Apache Hadoop.</comment>
-	<version>3.11.0</version>
+	<version>4.6.0</version>
 	<components>
 	  <component>
 	    <name>HUE_SERVER</name>
