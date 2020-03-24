@@ -27,7 +27,7 @@ sudo git clone https://github.com/steven-dfheinz/HDP3-Hue-Service.git /var/lib/a
 service ambari-server restart
 ```
 - In Ambari click on 'Add Service' and install HUE
-- Install requires HDFS,Yarn,Hive,Hbase,Spark,Zookeeper,Sqoop,Oozie.  
+- Install requires existing install of HDFS,Yarn,Hive,Hbase,Spark,Zookeeper,Sqoop,Oozie and eecute python command below before installing Hue.
 
 #### Known Issues
 - If Hbase or Spark are missing, the install will fail on missing config objects

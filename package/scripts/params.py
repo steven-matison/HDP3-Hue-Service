@@ -31,6 +31,7 @@ stack_root = Script.get_stack_root()
 # Hue 4.x download url
 hue_version = '4.6.0'
 download_url = 'echo https://cdn.gethue.com/downloads/hue-4.6.0.tgz'
+# can clean this one up using hue_version where this var is used
 hue_version_dir = 'hue-4.6.0'
 # New Cluster Stack Version that is defined during the RESTART of a Rolling Upgrade
 version = default("/commandParams/version", None)
@@ -318,7 +319,10 @@ hive_ssl_cacerts = config['configurations']['hue-hive-site']['ssl_cacerts']
 hive_ssl_validate = config['configurations']['hue-hive-site']['ssl_validate']
 
 # configurations of Hbase
-hbase_master_hosts = default(config['clusterHostInfo']['hbase_master_hosts'],[])
+#conflict here
+#hbase_master_hosts = default(config['clusterHostInfo']['hbase_master_hosts'],[])
+# HDP3 expects a / separated list of hosts
+hbase_master_hosts = 'hdp.cloudera.com/'
 hbase_clusters = []
 hbase_cluster = ''
 if len(hbase_master_hosts) > 0:
@@ -341,10 +345,10 @@ zookeeper_rest_url = ''
 if len(zookeeper_hosts) > 0:
   if zookeeper_client_port is not None:
     for i in range(len(zookeeper_hosts)):
-  	  zookeeper_host_ports.append(format(zookeeper_hosts[i] + ":{zookeeper_client_port}"))
+      zookeeper_host_ports.append(format(zookeeper_hosts[i] + ":{zookeeper_client_port}"))
   else:
     for i in range(len(zookeeper_hosts)):
-  	  zookeeper_host_ports.append(format(zookeeper_hosts[i] + ":2181"))
+      zookeeper_host_ports.append(format(zookeeper_hosts[i] + ":2181"))
   zookeeper_host_port = ",".join(zookeeper_host_ports)
   zookeeper_rest_url = format("http://" + zookeeper_hosts[0] + ":9998")
 
@@ -355,13 +359,16 @@ spark_hiveserver2_thrift_port = "10002"
 spark_history_server_url = ''
 if len(spark_thriftserver_hosts) > 0:
   spark_thriftserver_host = spark_thriftserver_hosts[0]
-  spark_hiveserver2_thrift_port = str(config['configurations']['spark-hive-site-override']['hive.server2.thrift.port']).strip()
+  # conflict here
+  #spark_hiveserver2_thrift_port = str(config['configurations']['spark-hive-site-override']['hive.server2.thrift.port']).strip()
   spark_jobhistoryserver_hosts = default("/clusterHostInfo/spark_jobhistoryserver_hosts", [])
   if len(spark_jobhistoryserver_hosts) > 0:
     spark_history_server_host = spark_jobhistoryserver_hosts[0]
   else:
     spark_history_server_host = "localhost"
-  spark_history_ui_port = config['configurations']['spark-defaults']['spark.history.ui.port']
+  #conflict here
+  #spark_history_ui_port = config['configurations']['spark-defaults']['spark.history.ui.port']
+  spark_history_ui_port = ''
   spark_history_server_url = format("http://{spark_history_server_host}:{spark_history_ui_port}")
 livy_server_hosts = default("/clusterHostInfo/livy_server_hosts", [])
 livy_server_host = 'localhost'
