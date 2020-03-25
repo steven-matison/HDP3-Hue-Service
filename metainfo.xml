@@ -133,7 +133,7 @@
 	  <config-type>hue-ugsync-site</config-type>
 	  <config-type>hue-metastore-site</config-type>
 	  <config-type>hue-notebook-site</config-type>
-	  <config-type>hue-pseudodistributed-site</config-type>
+	  <config-type>pseudo-distributed.ini</config-type>
 	  <config-type>hue-ini</config-type>
 	</configuration-dependencies>
 	<restartRequiredAfterChange>true</restartRequiredAfterChange>
