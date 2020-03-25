@@ -23,9 +23,9 @@
         "url":"%@://%@:%@/",
         "port":{
           "http_property": "hue.server.port",
-          "http_default_port": "8000",
+          "http_default_port": "8888",
           "https_property": "hue.server.port",
-          "https_default_port": "8000",
+          "https_default_port": "8888",
           "regex": "^(\\d+)$",
           "site": "hue-site"
         }

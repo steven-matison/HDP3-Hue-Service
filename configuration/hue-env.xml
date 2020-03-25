@@ -79,7 +79,7 @@
 
   <property>
     <name>http_port</name>
-    <value>8000</value>
+    <value>8888</value>
     <display-name>HTTP Post</display-name>
     <description>Webserver listens on this port</description>
   </property>

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+d#!/usr/bin/env python
 # encoding=utf8
 import sys, os, pwd, grp, signal, time
 reload(sys)
@@ -26,8 +26,9 @@ def setup_hue():
     content=''
   )
     
-  Logger.info("Creating symlinks /usr/hdp/current/hadoop-client/lib/hue-plugins-{params.hue_version}-SNAPSHOT.jar")
-  Link("{0}/desktop/libs/hadoop/java-lib/*".format(params.hue_dir),to = "/usr/hdp/current/hadoop-client/lib")
+  # these plugin files do not exist in 4.x  
+  #Logger.info(format("Creating symlinks /usr/hdp/current/hadoop-client/lib/hue-plugins-{params.hue_version}-SNAPSHOT.jar"))
+  #Link("{0}/desktop/libs/hadoop/java-lib/*".format(params.hue_dir),to = "/usr/hdp/current/hadoop-client/lib")
   Execute('find {0} -iname "*.sh" | xargs chmod +x'.format(params.service_packagedir))
   # Create a home directory for solr user on HDFS
   params.HdfsResource(params.hue_hdfs_home_dir,
@@ -42,8 +43,8 @@ def setup_hue():
     content = InlineTemplate(params.hue_log_content), 
     owner = params.hue_user
   )
-  Logger.info(format("Creating {hue_conf_dir}/pseudo-distributed.ini config file"))
-  File(format("{hue_conf_dir}/pseudo-distributed.ini"), 
+  Logger.info(format("Creating {hue_conf_dir}/hue.ini config file"))
+  File(format("{hue_conf_dir}/hue.ini"), 
     content = InlineTemplate(params.hue_pseudodistributed_content), 
     owner = params.hue_user
   )
