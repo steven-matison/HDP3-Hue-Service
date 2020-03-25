@@ -58,7 +58,7 @@
 
   # A comma-separated list of available Hue load balancers
   ## hue_load_balancer=
-`
+
   # Time zone name
   time_zone={{desktop_time_zone}}
 
