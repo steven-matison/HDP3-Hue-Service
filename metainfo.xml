@@ -118,7 +118,7 @@
 	  </theme>
 	</themes>
 	
-        <configuration-dependencies>
+    <configuration-dependencies>
 	  <config-type>hue-desktop-site</config-type>
 	  <config-type>hue-hadoop-site</config-type>
 	  <config-type>hue-hive-site</config-type>
@@ -134,7 +134,7 @@
 	  <config-type>hue-metastore-site</config-type>
 	  <config-type>hue-notebook-site</config-type>
 	  <config-type>pseudo-distributed.ini</config-type>
-	  <config-type>hue-ini</config-type>
+	  <config-type>hue.ini</config-type>
 	</configuration-dependencies>
 	<restartRequiredAfterChange>true</restartRequiredAfterChange>
 
