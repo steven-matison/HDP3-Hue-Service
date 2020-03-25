@@ -61,9 +61,9 @@ def download_hue():
   Logger.info("Hue Build Starting")
   Execute('cd /usr/local/{0} && PREFIX=/usr/local make install'.format(params.hue_version_dir))
   # Ensure all Hue files owned by hue
-  Execute('chown -R {0}:{1} /usr/local/{2}'.format(params.hue_user,params.hue_group,params.hue_dir))
+  Execute('chown -R {0}:{1} {2}'.format(params.hue_user,params.hue_group,params.hue_dir))
   # Create Required Symlinks
-  Execute('ln -s /usr/local/{0} /usr/hdp/current/hue-server'.format(params.hue_dir))
+  Execute('ln -s {0} /usr/hdp/current/hue-server'.format(params.hue_dir))
   Logger.info("Hue Service is installed")
 
 def add_hdfs_configuration(if_ranger=False, security_enabled=False):
