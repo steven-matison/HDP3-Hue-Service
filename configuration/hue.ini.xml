@@ -30,12 +30,12 @@
 # ===================================
 #
 # For complete documentation about the contents of this file, run
-#   $ <hue_root>/build/env/bin/hue config_help
+#   $ (hue_root)/build/env/bin/hue config_help
 #
 # All .ini files under the current directory are treated equally.  Their
 # contents are merged to form the Hue configuration, which can
 # can be viewed on the Hue at
-#   http://<hue_host>:<port>/dump_config
+#   http://(hue_host):(port)/dump_config
 
 
 ###########################################################################
@@ -58,7 +58,7 @@
 
   # A comma-separated list of available Hue load balancers
   ## hue_load_balancer=
-
+`
   # Time zone name
   time_zone={{desktop_time_zone}}
 
@@ -333,19 +333,12 @@
   [[custom]]
 
     # Top banner HTML code
-    # e.g. <H4>Test Lab A2 Hue Services</H4>
-    ## banner_top_html='<div style="padding: 4px; text-align: center; background-color: #003F6C; color: #DBE8F1">This is Hue 4 Beta! - Please feel free to email any feedback / questions to <a href="mailto:team@gethue.com" target="_blank" style="color: #FFF; font-weight: bold">team@gethue.com</a> or <a href="https://twitter.com/gethue" target="_blank" style="color: #FFF; font-weight: bold">@gethue</a>.</div>'
+    # e.g. (H4)Test Lab A2 Hue Services(/H4)
+    ## banner_top_html=
 
     # Login splash HTML code
     # e.g. WARNING: You are required to have authorization before you proceed
-    ## login_splash_html=<h4>GetHue.com</h4><br/><br/>WARNING: You have accessed a computer managed by GetHue. You are required to have authorization from GetHue before you proceed.
-
-    # Cache timeout in milliseconds for the assist, autocomplete, etc.
-    # defaults to 10 days, set to 0 to disable caching
-    ## cacheable_ttl=864000000
-
-    # SVG code to replace the default Hue logo in the top bar and sign in screen
-    # e.g. <image xlink:href="/static/desktop/art/hue-logo-mini-white.png" x="0" y="0" height="40" width="160" />
+    ## login_splash_html=
     ## logo_svg=
 
   # Configuration options for user authentication into the web application
@@ -467,9 +460,9 @@
     # when 'bind_password' is not set.
     ## bind_password_script=
 
-    # Pattern for searching for usernames -- Use <username> for the parameter
+    # Pattern for searching for usernames -- Use (username) for the parameter
     # For use when using LdapBackend for Hue authentication
-    ## ldap_username_pattern="uid=<username>,ou=People,dc=mycompany,dc=com"
+    ## ldap_username_pattern="uid=(username),ou=People,dc=mycompany,dc=com"
 
     # Create users in Hue when they try to login with their LDAP credentials
     # For use when using LdapBackend for Hue authentication
@@ -565,9 +558,9 @@
         # when 'bind_password' is not set.
         ## bind_password_script=
 
-        # Pattern for searching for usernames -- Use <username> for the parameter
+        # Pattern for searching for usernames -- Use (username) for the parameter
         # For use when using LdapBackend for Hue authentication
-        ## ldap_username_pattern="uid=<username>,ou=People,dc=mycompany,dc=com"
+        ## ldap_username_pattern="uid=(username),ou=People,dc=mycompany,dc=com"
 
         ## Use search bind authentication.
         ## search_bind_authentication=true
@@ -648,7 +641,7 @@
     #
     # Note that for sqlite3, 'name', below is a path to the filename. For other backends, it is the database name
     # Note for Oracle, options={"threaded":true} must be set in order to avoid crashes.
-    # Note for Oracle, you can use the Oracle Service Name by setting "host=" and "port=" and then "name=<host>:<port>/<service_name>".
+    # Note for Oracle, you can use the Oracle Service Name by setting "host=" and "port=" and then "name=(host):(port)/(service_name)".
     # Note for MariaDB use the 'mysql' engine.
     ## engine=sqlite3
     ## host=
@@ -1217,8 +1210,8 @@
 
   # Shortcuts to finding LLAP znode Key
   # Non-HA - hiveserver-interactive-site - hive.server2.zookeeper.namespace ex hive2 = /hive2
-  # HA-NonKerberized - <llap_app_name>_llap ex app name llap0 = /llap0_llap
-  # HA-Kerberized - <llap_app_name>_llap-sasl ex app name llap0 = /llap0_llap-sasl
+  # HA-NonKerberized - (llap_app_name)_llap ex app name llap0 = /llap0_llap
+  # HA-Kerberized - (llap_app_name)_llap-sasl ex app name llap0 = /llap0_llap-sasl
   ## hive_discovery_llap_znode = /hiveserver2-hive2
 
   # Whether to use Service Discovery for HiveServer2
@@ -1456,7 +1449,7 @@
   # Flag to enable the extraction of a uploaded archive in HDFS.
   ## enable_extract_uploaded_archive=true
 
-  # Redirect client to WebHdfs or S3 for file download. Note: Turning this on will override notebook/redirect_whitelist for user selected file downloads on WebHdfs & S3.
+  # Redirect client to WebHdfs or S3 for file download. Note: Turning this on will override notebook/redirect_whitelist for user selected file downloads on WebHdfs - S3.
   ## redirect_download=false
 
 ###########################################################################
@@ -1735,9 +1728,9 @@
       # Secure connections are the default, but this can be explicitly overridden:
       ## is_secure=true
 
-      # The default calling format uses https://<bucket-name>.s3.amazonaws.com but
+      # The default calling format uses https://(bucket-name).s3.amazonaws.com but
       # this may not make sense if DNS is not configured in this way for custom endpoints.
-      # e.g. Use boto.s3.connection.OrdinaryCallingFormat for https://s3.amazonaws.com/<bucket-name>
+      # e.g. Use boto.s3.connection.OrdinaryCallingFormat for https://s3.amazonaws.com/(bucket-name)
       ## calling_format=boto.s3.connection.OrdinaryCallingFormat
 
       # The time in seconds before a delegate key is expired. Used when filebrowser/redirect_download is used. Default to 4 Hours.
@@ -1764,14 +1757,14 @@
   [[adls_clusters]]
     # Default ADLS cluster
     [[[default]]]
-      ## fs_defaultfs=adl://<account_name>.azuredatalakestore.net
-      ## webhdfs_url=https://<account_name>.azuredatalakestore.net/webhdfs/v1
+      ## fs_defaultfs=adl://(account_name).azuredatalakestore.net
+      ## webhdfs_url=https://(account_name).azuredatalakestore.net/webhdfs/v1
 
   [[abfs_clusters]]
     # Default ABFS cluster
     [[[default]]]
-      ## fs_defaultfs=abfss://<container_name>@<account_name>.dfs.core.windows.net
-      ## webhdfs_url=https://<container_name>@<account_name>.dfs.core.windows.net
+      ## fs_defaultfs=abfss://(container_name)@(account_name).dfs.core.windows.net
+      ## webhdfs_url=https://(container_name)@(account_name).dfs.core.windows.net
 
 ###########################################################################
 # Settings for the Sentry lib
@@ -1875,8 +1868,8 @@
   ## xmlsec_binary=/usr/local/bin/xmlsec1
 
   # Entity ID for Hue acting as service provider.
-  # Can also accept a pattern where '<base_url>' will be replaced with server URL base.
-  ## entity_id="<base_url>/saml2/metadata/"
+  # Can also accept a pattern where '(base_url)' will be replaced with server URL base.
+  ## entity_id="(base_url)/saml2/metadata/"
 
   # Create users from SSO on login.
   ## create_users_on_login=true
@@ -1976,7 +1969,7 @@
   ## authenticate_url_twitter=https://api.twitter.com/oauth/authorize
   ## authenticate_url_google=https://www.googleapis.com/oauth2/v1/userinfo?access_token=
   ## authenticate_url_facebook=https://graph.facebook.com/me?access_token=
-  ## authenticate_url_linkedin=https://api.linkedin.com/v1/people/~:(email-address)?format=json&oauth2_access_token=
+  ## authenticate_url_linkedin=https://api.linkedin.com/v1/people/~:
 
   # Username Map. Json Hash format.
   # Replaces username parts in order to simplify usernames obtained
