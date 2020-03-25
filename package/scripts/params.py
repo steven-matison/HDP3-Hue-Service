@@ -515,7 +515,7 @@ desktop_auth_behind_reverse_proxy = config['configurations']['hue-auth-site']['b
 desktop_auth_reverse_proxy_header = config['configurations']['hue-auth-site']['reverse_proxy_header']
 
 hue_log_content = config['configurations']['hue-log4j-env']['content']
-hue_pseudodistributed_content = config['configurations']['pseudo-distributed.ini']['content']
+hue_ini_content = config['configurations']['hue.ini']['content']
 
 
 
