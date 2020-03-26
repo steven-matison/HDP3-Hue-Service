@@ -48,7 +48,7 @@ python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n 
 #### Coming Soon
 - Create a repository for hue fileset built via "make apps"
 - WIP - Updates for Hue 4.x - [Hue.4.6.0 Branch](https://github.com/steven-dfheinz/HDP3-Hue-Service/tree/Hue.4.6.0)
-- WIP - Bundling this service into an easier to use Management Pack [dfhz_hue_mpack](https://github.com/steven-dfheinz/dfhz_hue_mpack)
+- WIP - Bundling this service into an easier to use Management Pack - [dfhz_hue_mpack](https://github.com/steven-dfheinz/dfhz_hue_mpack)
 - Add better handling for missing components and/or multi-node clusters
 - Improve functionality for SSL and High Availability
 - Resolve User KeyError (python work around above)
