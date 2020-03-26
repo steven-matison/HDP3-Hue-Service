@@ -45,8 +45,8 @@ python /var/lib/ambari-server/resources/scripts/configs.py -u admin -p admin -n 
 
 #### Coming Soon
 - Create a repository for hue fileset built via "make install"
-- Resolve User KeyError
-- Bundling this service into an easier to use Management Pack for HDP 2.x & 3.x
+- Resolve User KeyError (python work around above)
+- Bundling this service into an easier to use Management Pack for HDP 2.x & 3.x [dfhz_hue_mpack](https://github.com/steven-dfheinz/dfhz_hue_mpack)
 - Add better handling for missing components and/or multi-node clusters
 - Improve functionality for SSL and High Availability
 
