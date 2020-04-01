@@ -11,7 +11,8 @@ Have a look here:  https://github.com/EsharEditor/ambari-hue-service
 Also see https://gethue.com for more information, versions, and official documentation.
 
 #### Version
-- Hue 3.11.0
+- Hue 3.11.0 ([master branch](https://github.com/steven-dfheinz/HDP3-Hue-Service))
+- Hue 4.6.0 ([Hue.4.6.0 branch](https://github.com/steven-dfheinz/HDP3-Hue-Service/tree/Hue.4.6.0))
 - HDP 3.x
 
 #### Setup
