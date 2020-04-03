@@ -58,6 +58,10 @@ def download_hue():
   Execute('tar -zxvf hue.tgz -C {0} && rm -f hue.tgz'.format(params.hue_install_dir))
   
   # Navigate to directory and build
+  Logger.info("Hue Symlink Cleanup Starting")
+  Execute('rm -rf /usr/local/hue')
+  Execute('rm -rf /usr/hdp/current/hue-server')
+  # Navigate to directory and build
   Logger.info("Hue Build Starting")
   Execute('cd /usr/local/{0} && PREFIX=/usr/local make install'.format(params.hue_version_dir))
   # Ensure all Hue files owned by hue
