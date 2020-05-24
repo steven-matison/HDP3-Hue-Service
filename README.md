@@ -38,7 +38,7 @@ rm -rf /var/lib/ambari-server/resources/stacks/HDP/3.1/services/HUE
 rm -rf /var/lib/ambari-agent/cache/stacks/HDP/3.1/services/HUE/
 rm -rf /usr/local/hue
 rm -rf /usr/hdp/current/hue-server
-rm -rf /usr/local/hue-4.6.0/
+rm -rf /usr/local/hue-3.11.0/
 ```
 **** be sure to get your correct versions for commands above
 
