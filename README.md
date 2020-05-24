@@ -15,7 +15,7 @@ Also see https://gethue.com for more information, versions, and official documen
 - Hue 4.6.0 ([Hue.4.6.0 branch](https://github.com/steven-dfheinz/HDP3-Hue-Service/tree/Hue.4.6.0))
 - HDP 3.x
 
-#### Setup
+#### Install
 - Deliver Service Fileset to Ambari   
 ``` 
 sudo git clone https://github.com/steven-dfheinz/HDP3-Hue-Service.git /var/lib/ambari-server/resources/stacks/HDP/[version]/services/HUE
@@ -29,6 +29,18 @@ service ambari-server restart
 ```
 - In Ambari click on 'Add Service' and install HUE
 - Install requires HDFS,Yarn,Hive,Hbase,Spark,Zookeeper,Sqoop,Oozie.  
+
+#### Uninstall
+- Excecute the following command to remove all files.  Be sure to restart ambari
+
+```
+rm -rf /var/lib/ambari-server/resources/stacks/HDP/3.1/services/HUE
+rm -rf /var/lib/ambari-agent/cache/stacks/HDP/3.1/services/HUE/
+rm -rf /usr/local/hue
+rm -rf /usr/hdp/current/hue-server
+rm -rf /usr/local/hue-4.6.0/
+```
+**** be sure to get your correct versions for commands above
 
 #### Known Issues
 - Issue with Pig Config (do not use pig HDP 3.x )
